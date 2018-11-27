@@ -1,14 +1,11 @@
-require 'faker'
-require 'uk_postcode'
-
-Faker::Config.locale = 'en-GB'
+require 'httparty'
 
 class RandomData
   include HTTParty
 
+  attr_accessor :single_postcode
+
   base_uri'https://api.postcodes.io'
 
-  def postcode_generator
-    JSON.parse(self.class.get("/postcodes/#{postcode}").body)
-  end
+
 end

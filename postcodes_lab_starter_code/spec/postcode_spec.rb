@@ -1,15 +1,13 @@
 require 'spec_helper'
 
-
-
 describe Postcodesio do
 
   context 'requesting information on a single postcode works correctly' do
 
     before(:all) do
-      @random_data = RandomData.new
+
       @postcodesio = Postcodesio.new
-      @postcodesio.get_single_postcode('TW106NF')
+      @postcodesio.get_single_postcode
       @response = @postcodesio
     end
 
@@ -90,17 +88,16 @@ describe Postcodesio do
       expect(@response.get_incode('single').length).to eq 3
     end
 
-    it "should return a outcode string of 3-4 characters" do
-      expect(@response.get_outcode('single').length).to be_between(3,4).inclusive
+    it "should return a outcode string of 2-4 characters" do
+      expect(@response.get_outcode('single').length).to be_between(2,4).inclusive
     end
   end
 
   context "multiple postcodes validation" do
 
     before(:all) do
-      data_array = ['HP52BN','TW106NF','S101BJ']
       @postcodesio = Postcodesio.new
-      @postcodesio.get_multiple_postcodes(data_array)
+      @postcodesio.get_multiple_postcodes
       @response = @postcodesio
     end
 
@@ -109,11 +106,11 @@ describe Postcodesio do
     end
 
     it "should return the first query as the first postcode in the response" do
-      expect(@response.get_first_query).to eq "HP52BN"
+      expect(@response.get_query(0)).to eq(@response.get_postcode('multiple')[0])
     end
 
     it "should return the second query as the second postcode in the response" do
-      expect(@response.get_second_query).to eq "TW106NF"
+      expect(@response.get_query(1)).to eq(@response.get_postcode('multiple')[1])
     end
 
     it "should have a results hash" do
@@ -121,7 +118,9 @@ describe Postcodesio do
     end
 
     it "should return a postcode between 5-7 in length"  do
-      expect(@response.get_postcode('multiple').length).to be_between(15,21).inclusive
+      @response.get_postcode('multiple').each do |postcode|
+        expect(postcode.length).to be_between(5,7).inclusive
+      end
     end
 
     it "should return an quality key integer between 1-9" do
@@ -222,9 +221,9 @@ describe Postcodesio do
     end
 
 
-    it "should return a outcode string of 3-4 characters" do
+    it "should return a outcode string of 2-4 characters" do
       @response.get_outcode('multiple').each do |outcode|
-        expect(outcode.length).to be_between(3,4).inclusive
+        expect(outcode.length).to be_between(2,4).inclusive
       end
     end
   end
