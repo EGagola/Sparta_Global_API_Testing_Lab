@@ -8,8 +8,6 @@ describe Postcodesio do
 
     before(:all) do
       @random_data = RandomData.new
-      postcode1 = @random_data.postcode_generator
-      puts postcode1
       @postcodesio = Postcodesio.new
       @postcodesio.get_single_postcode('TW106NF')
       @response = @postcodesio

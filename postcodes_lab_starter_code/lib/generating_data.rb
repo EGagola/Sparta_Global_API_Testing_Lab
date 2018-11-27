@@ -12,7 +12,3 @@ class RandomData
     JSON.parse(self.class.get("/postcodes/#{postcode}").body)
   end
 end
-
-
-rd = RandomData.new
-puts rd.postcode_generator
