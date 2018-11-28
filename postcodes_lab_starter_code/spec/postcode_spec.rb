@@ -36,7 +36,7 @@ describe Postcodesio do
     end
 
     it "should return a country which is one of the four constituent countries of the UK" do
-      expect(@response.get_country(1)).to eq("England").or eq("Scotland").or eq("Northern Ireland").or eq("Wales")
+      expect(@response.get_country(1)).to eq("England").or eq("Scotland").or eq("Northern Ireland").or eq("Wales").or eq('Isle of Man')
     end
 
     it "should return a string value for NHS authority " do
@@ -64,11 +64,11 @@ describe Postcodesio do
     end
 
     it "should return a region string" do
-      expect(@response.get_region(1).class).to eq(String).or eq(nil)
+      expect(@response.get_region(1).class).to eq(String).or eq(NilClass)
     end
 
     it "should return a parish string" do
-      expect(@response.get_parish(1).class).to eq(String).or eq(nil)
+      expect(@response.get_parish(1).class).to eq(String).or eq(NilClass)
     end
 
     it "should return a lsoa string" do
@@ -76,11 +76,11 @@ describe Postcodesio do
     end
 
     it "should return a msoa string" do
-      expect(@response.get_msoa(1).class).to eq(String).or eq(nil)
+      expect(@response.get_msoa(1).class).to eq(String).or eq(NilClass)
     end
 
     it "should return a admin_district string" do
-      expect(@response.get_admin_district(1).class).to eq(String).or eq(nil)
+      expect(@response.get_admin_district(1).class).to eq(String).or eq(NilClass)
     end
 
     it "should return a incode string of three characters" do
@@ -166,31 +166,31 @@ describe Postcodesio do
 
     it "should return a parliamentary constituency string" do
       @response.get_parliamentary_constituency(3).each do |parliamentary_constituency|
-        expect(parliamentary_constituency).to be_kind_of String
+        expect(parliamentary_constituency).to be_kind_of(String).or be_kind_of(NilClass)
       end
     end
 
     it "should return a european_electoral_region string" do
       @response.get_european_electoral_region(3).each do |european_electoral_region|
-        expect(european_electoral_region).to be_kind_of String
+        expect(european_electoral_region).to be_kind_of(String).or be_kind_of(NilClass)
       end
     end
 
     it "should return a primary_care_trust string" do
       @response.get_primary_care_trust(3).each do |primary_care_trust|
-        expect(primary_care_trust).to be_kind_of String
+        expect(primary_care_trust).to be_kind_of(String).or be_kind_of(NilClass)
       end
     end
 
     it "should return a region string" do
       @response.get_region(3).each do |region|
-        expect(region).to be_kind_of(String).or eq(nil)
+        expect(region).to be_kind_of(String).or be_kind_of(NilClass)
       end
     end
 
     it "should return a parish string" do
       @response.get_parish(3).each do |parish|
-        expect(parish).to be_kind_of(String).or eq(nil)
+        expect(parish).to be_kind_of(String).or be_kind_of(NilClass)
       end
     end
 
@@ -202,13 +202,13 @@ describe Postcodesio do
 
     it "should return a msoa string" do
       @response.get_msoa(3).each do |msoa|
-        expect(msoa).to be_kind_of(String).or eq(nil)
+        expect(msoa).to be_kind_of(String).or be_kind_of(NilClass)
       end
     end
 
     it "should return a admin_district string" do
       @response.get_admin_district(3).each do |admin_district|
-        expect(admin_district).to be_kind_of(String).or eq(nil)
+        expect(admin_district).to be_kind_of(String).or be_kind_of(NilClass)
       end
     end
 
