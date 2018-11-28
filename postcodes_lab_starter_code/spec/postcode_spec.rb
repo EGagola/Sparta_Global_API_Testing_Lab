@@ -64,11 +64,11 @@ describe Postcodesio do
     end
 
     it "should return a region string" do
-      expect(@response.get_region(1).class).to eq String
+      expect(@response.get_region(1).class).to eq(String).or eq(nil)
     end
 
     it "should return a parish string" do
-      expect(@response.get_parish(1).class).to eq String
+      expect(@response.get_parish(1).class).to eq(String).or eq(nil)
     end
 
     it "should return a lsoa string" do
@@ -76,11 +76,11 @@ describe Postcodesio do
     end
 
     it "should return a msoa string" do
-      expect(@response.get_msoa(1).class).to eq String
+      expect(@response.get_msoa(1).class).to eq(String).or eq(nil)
     end
 
     it "should return a admin_district string" do
-      expect(@response.get_admin_district(1).class).to eq String
+      expect(@response.get_admin_district(1).class).to eq(String).or eq(nil)
     end
 
     it "should return a incode string of three characters" do
@@ -184,13 +184,13 @@ describe Postcodesio do
 
     it "should return a region string" do
       @response.get_region(3).each do |region|
-        expect(region).to be_kind_of String
+        expect(region).to be_kind_of(String).or eq(nil)
       end
     end
 
     it "should return a parish string" do
       @response.get_parish(3).each do |parish|
-        expect(parish).to be_kind_of String
+        expect(parish).to be_kind_of(String).or eq(nil)
       end
     end
 
@@ -202,13 +202,13 @@ describe Postcodesio do
 
     it "should return a msoa string" do
       @response.get_msoa(3).each do |msoa|
-        expect(msoa).to be_kind_of String
+        expect(msoa).to be_kind_of(String).or eq(nil)
       end
     end
 
     it "should return a admin_district string" do
       @response.get_admin_district(3).each do |admin_district|
-        expect(admin_district).to be_kind_of String
+        expect(admin_district).to be_kind_of(String).or eq(nil)
       end
     end
 
