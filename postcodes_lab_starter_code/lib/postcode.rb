@@ -29,18 +29,18 @@ class Postcodesio
     @multiple_postcodes
   end
 
-  def get_status method_selector
-    if method_selector == 'single'
+  def get_status number_of_postcodes
+    if number_of_postcodes == 1
       @single_postcode['status']
-    elsif method_selector == 'multiple'
+    elsif number_of_postcodes > 1
       @multiple_postcodes['status']
     end
   end
 
-  def get_type method_selector
-    if method_selector == 'single'
+  def get_type number_of_postcodes
+    if number_of_postcodes == 1
       @single_postcode.class
-    elsif method_selector == 'multiple'
+    elsif number_of_postcodes > 1
       @multiple_postcodes.class
     end
   end
@@ -53,11 +53,11 @@ class Postcodesio
     array
   end
 
-  def get_postcode method_selector
-    if method_selector == 'single'
+  def get_postcode number_of_postcodes
+    if number_of_postcodes == 1
       postcode = @single_postcode["result"]["postcode"]
       postcode.gsub(" ","")
-    elsif method_selector == 'multiple'
+    elsif number_of_postcodes > 1
       condensed_string_array = []
       (generate_array 'postcode').each do |postcode|
         condensed_postcode = postcode.gsub(" ","")
@@ -67,138 +67,138 @@ class Postcodesio
     end
   end
 
-  def get_quality_key method_selector, position
-    if method_selector == 'single'
+  def get_quality_key number_of_postcodes, position
+    if number_of_postcodes == 1
       @single_postcode["result"]["quality"]
-    elsif method_selector == 'multiple'
+    elsif number_of_postcodes > 1
       @multiple_postcodes['result'][position]['result']['quality']
     end
   end
 
-  def get_ordnance_survey_eastings method_selector
-    if method_selector == 'single'
+  def get_ordnance_survey_eastings number_of_postcodes
+    if number_of_postcodes == 1
       @single_postcode['result']['eastings']
-    elsif method_selector == 'multiple'
+    elsif number_of_postcodes > 1
       generate_array 'eastings'
     end
   end
 
-  def get_ordnance_survey_northings method_selector
-    if method_selector == 'single'
+  def get_ordnance_survey_northings number_of_postcodes
+    if number_of_postcodes == 1
       @single_postcode['result']['northings']
-    elsif method_selector == 'multiple'
+    elsif number_of_postcodes > 1
       generate_array 'northings'
     end
   end
 
-  def get_country method_selector
-    if method_selector == 'single'
+  def get_country number_of_postcodes
+    if number_of_postcodes == 1
       @single_postcode['result']['country']
-    elsif method_selector == 'multiple'
+    elsif number_of_postcodes > 1
       generate_array 'country'
     end
   end
 
-  def get_NHS method_selector
-    if method_selector == 'single'
+  def get_NHS number_of_postcodes
+    if number_of_postcodes == 1
       @single_postcode['result']['nhs_ha']
-    elsif method_selector == 'multiple'
+    elsif number_of_postcodes > 1
       generate_array 'nhs_ha'
     end
   end
 
-  def get_longitude method_selector
-    if method_selector == 'single'
+  def get_longitude number_of_postcodes
+    if number_of_postcodes == 1
       @single_postcode['result']['longitude']
-    elsif method_selector == 'multiple'
+    elsif number_of_postcodes > 1
       generate_array 'longitude'
     end
   end
 
-  def get_latitude method_selector
-    if method_selector == 'single'
+  def get_latitude number_of_postcodes
+    if number_of_postcodes == 1
       @single_postcode['result']['latitude']
-    elsif method_selector == 'multiple'
+    elsif number_of_postcodes > 1
       generate_array 'latitude'
     end
   end
 
-  def get_parliamentary_constituency method_selector
-    if method_selector == 'single'
+  def get_parliamentary_constituency number_of_postcodes
+    if number_of_postcodes == 1
       @single_postcode['result']['parliamentary_constituency']
-    elsif method_selector == 'multiple'
+    elsif number_of_postcodes > 1
       generate_array 'parliamentary_constituency'
     end
   end
 
-  def get_european_electoral_region method_selector
-    if method_selector == 'single'
+  def get_european_electoral_region number_of_postcodes
+    if number_of_postcodes == 1
       @single_postcode['result']['european_electoral_region']
-    elsif method_selector == 'multiple'
+    elsif number_of_postcodes > 1
       generate_array 'european_electoral_region'
     end
   end
 
-  def get_primary_care_trust method_selector
-    if method_selector == 'single'
+  def get_primary_care_trust number_of_postcodes
+    if number_of_postcodes == 1
       @single_postcode['result']['primary_care_trust']
-    elsif method_selector == 'multiple'
+    elsif number_of_postcodes > 1
       generate_array 'primary_care_trust'
     end
   end
 
-  def get_region method_selector
-    if method_selector == 'single'
+  def get_region number_of_postcodes
+    if number_of_postcodes == 1
       @single_postcode['result']['region']
-    elsif method_selector == 'multiple'
+    elsif number_of_postcodes > 1
       generate_array 'region'
     end
   end
 
-  def get_parish method_selector
-    if method_selector == 'single'
+  def get_parish number_of_postcodes
+    if number_of_postcodes == 1
       @single_postcode['result']['parish']
-    elsif method_selector == 'multiple'
+    elsif number_of_postcodes > 1
       generate_array 'parish'
     end
   end
 
-  def get_lsoa method_selector
-    if method_selector == 'single'
+  def get_lsoa number_of_postcodes
+    if number_of_postcodes == 1
       @single_postcode['result']['lsoa']
-    elsif method_selector == 'multiple'
+    elsif number_of_postcodes > 1
       generate_array 'lsoa'
     end
   end
 
-  def get_msoa method_selector
-    if method_selector == 'single'
+  def get_msoa number_of_postcodes
+    if number_of_postcodes == 1
       @single_postcode['result']['msoa']
-    elsif method_selector == 'multiple'
+    elsif number_of_postcodes > 1
       generate_array 'msoa'
     end
   end
 
-  def get_admin_district method_selector
-    if method_selector == 'single'
+  def get_admin_district number_of_postcodes
+    if number_of_postcodes == 1
       @single_postcode['result']['admin_district']
-    elsif method_selector == 'multiple'
+    elsif number_of_postcodes > 1
       generate_array 'admin_district'
     end
   end
 
-  def get_incode method_selector
-    if method_selector == 'single'
+  def get_incode number_of_postcodes
+    if number_of_postcodes == 1
       @single_postcode['result']['incode']
-    elsif method_selector == 'multiple'
+    elsif number_of_postcodes > 1
       generate_array 'incode'
     end
   end
 
-  def get_outcode method_selector
-    if method_selector == 'single'
+  def get_outcode number_of_postcodes
+    if number_of_postcodes == 1
       @single_postcode['result']['outcode']
-    elsif method_selector == 'multiple'
+    elsif number_of_postcodes > 1
       generate_array 'outcode'
     end
   end
