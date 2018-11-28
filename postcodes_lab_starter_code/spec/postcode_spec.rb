@@ -78,7 +78,6 @@ describe Postcodesio do
     it "should return a msoa string" do
       expect(@response.get_msoa('single').class).to eq String
     end
-    # admin ward and county are not documented however tested below
 
     it "should return a admin_district string" do
       expect(@response.get_admin_district('single').class).to eq String
@@ -206,7 +205,6 @@ describe Postcodesio do
         expect(msoa).to be_kind_of String
       end
     end
-    # admin ward and county are not documented however tested below
 
     it "should return a admin_district string" do
       @response.get_admin_district('multiple').each do |admin_district|

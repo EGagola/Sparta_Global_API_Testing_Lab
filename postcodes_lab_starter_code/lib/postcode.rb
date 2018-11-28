@@ -1,6 +1,5 @@
 require 'httparty'
 require 'json'
-require_relative 'generating_data'
 
 class Postcodesio
   include HTTParty
