@@ -36,7 +36,7 @@ describe Postcodesio do
     end
 
     it "should return a country which is one of the four constituent countries of the UK" do
-      expect(@response.get_element('country',1)).to eq("England").or eq("Scotland").or eq("Northern Ireland").or eq("Wales").or eq('Isle of Man')
+      expect(@response.get_element('country',1)).to eq("England").or eq("Scotland").or eq("Northern Ireland").or eq("Wales").or eq('Isle of Man').or eq('Channel Islands')
     end
 
     it "should return a string value for NHS authority " do
